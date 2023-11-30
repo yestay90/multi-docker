@@ -14,3 +14,10 @@ after_success:
   - docker build -t yestay90/multi-nginx ./nginx
   - docker build -t yestay90/multi-server ./server
   - docker build -t yestay90/multi-worker ./worker
+
+  #  Login to docker CLI
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  - docker push yestay90/multi-client
+  - docker push yestay90/multi-nginx
+  - docker push yestay90/multi-server
+  - docker push yestay90/multi-worker
